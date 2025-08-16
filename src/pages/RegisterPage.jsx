@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../context/AuthContext";
-import useRegister from "../hooks/useRegister";
+import registerUser from "../hooks/useRegister";
 
 function RegisterPage() {
   const { user, loading } = useContext(AuthContext);
@@ -18,7 +18,7 @@ function RegisterPage() {
     e.preventDefault();
     try {
       if (confirmPassword == password) {
-        await useRegister(name, email, password);
+        await registerUser(name, email, password);
         Swal.fire({
           title: "Congrats!",
           text: "User successfully created",
