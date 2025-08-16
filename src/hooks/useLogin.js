@@ -1,10 +1,8 @@
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../config/firebase';
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../config/firebase";
 
 async function useLogin(email, password) {
   try {
-
-    
     const userCredential = await signInWithEmailAndPassword(
       auth,
       email,
@@ -15,23 +13,23 @@ async function useLogin(email, password) {
     let customMessage;
 
     switch (err.code) {
-      case 'auth/invalid-credential':
-        customMessage = 'Email atau password salah';
+      case "auth/invalid-credential":
+        customMessage = "Email atau password salah";
         break;
-      case 'auth/invalid-email':
-        customMessage = 'Format email tidak valid';
+      case "auth/invalid-email":
+        customMessage = "Format email tidak valid";
         break;
-      case 'auth/user-disabled':
-        customMessage = 'Akun ini telah dinonaktifkan';
+      case "auth/user-disabled":
+        customMessage = "Akun ini telah dinonaktifkan";
         break;
-      case 'auth/user-not-found':
-        customMessage = 'Email tidak terdaftar';
+      case "auth/user-not-found":
+        customMessage = "Email tidak terdaftar";
         break;
-      case 'auth/wrong-password':
-        customMessage = 'Password salah';
+      case "auth/wrong-password":
+        customMessage = "Password salah";
         break;
       default:
-        customMessage = 'Terjadi kesalahan saat login';
+        customMessage = "Terjadi kesalahan saat login";
     }
 
     throw {

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 
 const UploadWidget = ({ setImages }) => {
   const cloudinaryRef = useRef();
@@ -8,17 +8,17 @@ const UploadWidget = ({ setImages }) => {
     cloudinaryRef.current = window.cloudinary;
     widgetRef.current = cloudinaryRef.current.createUploadWidget(
       {
-        cloudName: 'dvkwdyyc7',
-        uploadPreset: 'tulis-image',
+        cloudName: "dvkwdyyc7",
+        uploadPreset: "tulis-image",
       },
       function (error, result) {
-        if (!error && result && result.event == 'success') {
+        if (!error && result && result.event == "success") {
           setImages(result.info.secure_url);
         }
         // Handle the result or error here
       }
     );
-  }, []);
+  }, [setImages]);
 
   return (
     <button

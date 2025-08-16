@@ -8,9 +8,9 @@ import {
   getDoc,
   doc,
   updateDoc,
-} from 'firebase/firestore';
-import { db } from '../config/firebase';
-import { setLoading, setError, setCart } from './cartSlice';
+} from "firebase/firestore";
+import { db } from "../config/firebase";
+import { setLoading, setError, setCart } from "./cartSlice";
 
 export const getItemFromCart = (userId) => async (dispatch) => {
   try {
@@ -18,9 +18,9 @@ export const getItemFromCart = (userId) => async (dispatch) => {
     dispatch(setError(null));
 
     const cartQuery = query(
-      collection(db, 'cart'),
-      where('status', '==', 'unpaid'),
-      where('userId', '==', userId)
+      collection(db, "cart"),
+      where("status", "==", "unpaid"),
+      where("userId", "==", userId)
     );
     const cartSnapshot = await getDocs(cartQuery);
     const cartItems = cartSnapshot.docs.map((doc) => ({
@@ -42,17 +42,17 @@ export const addItemToCart = (productId, userId) => async (dispatch) => {
     dispatch(setLoading(true));
     dispatch(setError(null));
 
-    const product = await getDoc(doc(db, 'products', productId));
+    const product = await getDoc(doc(db, "products", productId));
     const productData = product.data();
-    
+
     // Ensure price is a valid number
     const price = Number(productData.price) || 0;
 
     const cartQuery = query(
-      collection(db, 'cart'),
-      where('productId', '==', productId),
-      where('status', '==', 'unpaid'),
-      where('userId', '==', userId)
+      collection(db, "cart"),
+      where("productId", "==", productId),
+      where("status", "==", "unpaid"),
+      where("userId", "==", userId)
     );
     const cartSnapshot = await getDocs(cartQuery);
 
@@ -60,16 +60,16 @@ export const addItemToCart = (productId, userId) => async (dispatch) => {
       const cartDoc = cartSnapshot.docs[0];
       const currentQty = Number(cartDoc.data().qty) || 0;
       const newQty = currentQty + 1;
-      await updateDoc(doc(db, 'cart', cartDoc.id), {
+      await updateDoc(doc(db, "cart", cartDoc.id), {
         qty: newQty,
         totalPrice: price * newQty,
       });
     } else {
-      await addDoc(collection(db, 'cart'), {
+      await addDoc(collection(db, "cart"), {
         productId: productId,
         userId: userId,
         qty: 1,
-        status: 'unpaid',
+        status: "unpaid",
         totalPrice: price,
       });
     }
@@ -88,18 +88,18 @@ export const incrementQty = (id, userId) => async (dispatch) => {
     dispatch(setLoading(true));
     dispatch(setError(null));
 
-    const cartDoc = await getDoc(doc(db, 'cart', id));
+    const cartDoc = await getDoc(doc(db, "cart", id));
     const cartData = cartDoc.data();
     if (cartData) {
-      const productDoc = await getDoc(doc(db, 'products', cartData.productId));
+      const productDoc = await getDoc(doc(db, "products", cartData.productId));
       const productData = productDoc.data();
-      
+
       // Ensure values are valid numbers
       const price = Number(productData.price) || 0;
       const currentQty = Number(cartData.qty) || 0;
       const newQty = currentQty + 1;
-      
-      await updateDoc(doc(db, 'cart', id), {
+
+      await updateDoc(doc(db, "cart", id), {
         qty: newQty,
         totalPrice: price * newQty,
       });
@@ -119,20 +119,20 @@ export const decrementQty = (id, userId) => async (dispatch) => {
     dispatch(setLoading(true));
     dispatch(setError(null));
 
-    const cartDoc = await getDoc(doc(db, 'cart', id));
+    const cartDoc = await getDoc(doc(db, "cart", id));
     const cartData = cartDoc.data();
 
     if (cartData) {
       // Get product price from products collection
-      const productDoc = await getDoc(doc(db, 'products', cartData.productId));
+      const productDoc = await getDoc(doc(db, "products", cartData.productId));
       const productData = productDoc.data();
 
       // Ensure values are valid numbers
       const price = Number(productData.price) || 0;
       const currentQty = Number(cartData.qty) || 0;
       const newQty = currentQty - 1;
-      
-      await updateDoc(doc(db, 'cart', id), {
+
+      await updateDoc(doc(db, "cart", id), {
         qty: newQty,
         totalPrice: price * newQty,
       });
@@ -151,10 +151,10 @@ export const removeItemFromCart = (id, userId) => async (dispatch) => {
     dispatch(setLoading(true));
     dispatch(setError(null));
 
-    const cartDoc = await getDoc(doc(db, 'cart', id));
+    const cartDoc = await getDoc(doc(db, "cart", id));
     const cartData = cartDoc.data();
     if (cartData) {
-      await deleteDoc(doc(db, 'cart', id));
+      await deleteDoc(doc(db, "cart", id));
       dispatch(getItemFromCart(userId));
     }
   } catch (err) {

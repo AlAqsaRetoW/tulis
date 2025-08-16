@@ -1,57 +1,55 @@
 import { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { successAlert, errorAlert } from "../utils/Swal";
-import { AuthContext } from '../context/AuthContext';
-import useLogin from '../hooks/useLogin'
-import { useGoogleLogin } from "../hooks/useGooglelogin";
+import { AuthContext } from "../context/AuthContext";
+import loginUser from "../hooks/useLogin";
+import { useGoogleLogin as googleLogin } from "../hooks/useGooglelogin";
 // import GoogleLogo from '../assets/google-logo.svg';
 
 function LoginPage() {
   const { user, loading } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await useLogin(email, password);
-      setEmail('');
-      setPassword('');
-      successAlert('Success!', 'Logged in');
-      navigate('/admin');
+      await loginUser(email, password);
+      setEmail("");
+      setPassword("");
+      successAlert("Success!", "Logged in");
+      navigate("/admin");
     } catch (err) {
-      setPassword('');
-      errorAlert('Error!', err.customMessage);
+      setPassword("");
+      errorAlert("Error!", err.customMessage);
     }
-  }
+  };
 
   const handleGoolgeLogin = async () => {
     try {
-      const userCredential = await useGoogleLogin();
-      navigate('/admin');
+      await googleLogin();
+      navigate("/admin");
     } catch (err) {
-      errorAlert('Error!', err.customMessage);
+      errorAlert("Error!", err.customMessage);
     }
-  }
+  };
 
   useEffect(() => {
     if (user && !loading) {
-      navigate('/admin');
+      navigate("/admin");
     }
   }, [navigate, user, loading]);
 
-  if (loading) (<h1>Loading, please wait..</h1>);
+  if (loading) <h1>Loading, please wait..</h1>;
 
   return (
     <>
       {/* <!-- Login Page Start --> */}
       <div className="grid grid-cols-6 gap-5 max-w-screen-xl mx-auto">
         <div className="col-span-3 flex justify-center items-center">
-          <h1 className="text-5xl font-bold">
-            Login
-          </h1>
+          <h1 className="text-5xl font-bold">Login</h1>
         </div>
         <div className="col-span-3 px-20 min-h-[calc(100vh-200px)] flex flex-col justify-center">
           <form className="w-full" onSubmit={handleLogin}>
@@ -77,7 +75,8 @@ function LoginPage() {
             </div>
             <button
               className=" bg-sky-700 rounded-lg py-3 px-2 w-full text-white font-bold mt-5 cursor-pointer"
-              type="submit">
+              type="submit"
+            >
               Login
             </button>
           </form>
@@ -89,15 +88,14 @@ function LoginPage() {
           <button
             className="bg-white border border-gray-300 rounded-lg py-3 px-2 w-full text-black font-bold mt-5 cursor-pointer"
             type="submit"
-            onClick={handleGoolgeLogin}>
+            onClick={handleGoolgeLogin}
+          >
             Sign In with Google
           </button>
 
           <div className="justify-center mt-3 text-center">
             Don't have an account?
-            <Link
-              to="/register"
-              className="underline hover:text-sky-700">
+            <Link to="/register" className="underline hover:text-sky-700">
               Register here
             </Link>
           </div>
@@ -105,7 +103,7 @@ function LoginPage() {
       </div>
       {/* <!-- Login Page End --> */}
     </>
-  )
+  );
 }
 
-export default LoginPage
+export default LoginPage;

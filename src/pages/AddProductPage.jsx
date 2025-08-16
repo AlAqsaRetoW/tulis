@@ -1,30 +1,32 @@
-import { Plus } from 'lucide-react';
-import { useState } from 'react';
-import { successAlert, errorAlert } from '../utils/Swal';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { addProduct } from '../app/productActions';
-import UploadWidget from '../components/UploadWidget';
+import { Plus } from "lucide-react";
+import { useState } from "react";
+import { successAlert, errorAlert } from "../utils/Swal";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../app/productActions";
+import UploadWidget from "../components/UploadWidget";
 
 function AddProductPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [name, setName] = useState('');
-  const [images, setImages] = useState('');
-  const [category, setCategory] = useState('');
-  const [desc, setDesc] = useState('');
+  const [name, setName] = useState("");
+  const [images, setImages] = useState("");
+  const [category, setCategory] = useState("");
+  const [desc, setDesc] = useState("");
   const [price, setPrice] = useState(0);
   const [stock, setStock] = useState(0);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      dispatch(addProduct({ name, images, category, desc, price, stock }));
-      successAlert('Success Add Product!', `${name} has been added`);
-      navigate('/admin');
+      await dispatch(
+        addProduct({ name, images, category, desc, price, stock })
+      );
+      successAlert("Success Add Product!", `${name} has been added`);
+      navigate("/admin");
     } catch (err) {
-      errorAlert('Error Add Product!', err.message);
+      errorAlert("Error Add Product!", err?.message || "Failed to add product");
     }
   };
 
@@ -100,7 +102,6 @@ function AddProductPage() {
                     required
                   />
                 </div>
-
               </div>
               <div className="flex flex-col mt-3">
                 <label>Stock:</label>

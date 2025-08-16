@@ -1,21 +1,9 @@
-import { createContext, useState } from 'react';
+import { createContext } from "react";
 
 export const ThemeContext = createContext({
-  theme: 'light',
-  setTheme: () => { },
+  theme: "light",
+  setTheme: () => {},
+  toggleTheme: () => {},
 });
 
-export default function ThemeContextProvider({ children }) {
-  const [theme, setTheme] = useState('light')
-
-  const toggleTheme = () => {
-    setTheme((prev) => prev === 'light' ? 'dark' : 'light')
-  }
-  const value = { theme, toggleTheme }
-
-  return (
-    <ThemeContext.Provider value={value}>
-      {children}
-    </ThemeContext.Provider>
-  )
-}
+// This file only exports the context to satisfy Fast Refresh constraints

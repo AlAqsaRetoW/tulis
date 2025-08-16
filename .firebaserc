@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "fern007-phase2-01"
-  }
+    "default": "tulis-349aa",
+    "tulis": "tulis-349aa"
+  },
+  "targets": {},
+  "etags": {}
 }

@@ -19,23 +19,26 @@ function ProductCard({ product }) {
   return (
     <div className="relative group min-h-96">
       <Link to={`/detail-product/${product.id}`} className="block">
-        <div className="border border-gray-300 rounded-lg p-4">
+        <div className="theme-border theme-border-hover theme-bg-surface hover:theme-bg-elevated border rounded-lg p-4 transition-all duration-300 hover:shadow-lg dark:hover:shadow-xl">
           <img
             src={product.images}
             alt={product.name}
             className="w-full h-64 object-cover rounded-md"
           />
-          <h2 className="mt-3 font-semibold">{product.name}</h2>
-          <p className="text-gray-600">{product.desc}</p>
-          <p className="font-bold mt-2">Rp {product.price.toLocaleString()}</p>
+          <h2 className="mt-3 font-semibold theme-text">{product.name}</h2>
+          <p className="theme-text-secondary">{product.desc}</p>
+          <p className="font-bold mt-2 theme-accent">
+            Rp {product.price.toLocaleString()}
+          </p>
         </div>
       </Link>
-      <div className="absolute bottom-0 right-0 opacity-0 group-hover:opacity-100 transition-opacity">
+      <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
         <button
-          className="block bg-sky-700 hover:bg-sky-900 text-white p-2 rounded-full"
+          className="theme-accent-bg theme-accent-hover text-white p-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
           onClick={handleAddToCart}
+          aria-label="Add to cart"
         >
-          <ShoppingCart className="w-6 h-6" />
+          <ShoppingCart className="w-5 h-5" />
         </button>
       </div>
     </div>

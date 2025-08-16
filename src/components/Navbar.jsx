@@ -15,7 +15,7 @@ function Navbar() {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      successAlert("Success!", "Logout success");
+      successAlert("Success!", "Logout success"); 
       navigate("/");
     } catch (err) {
       console.error(err);
@@ -26,59 +26,67 @@ function Navbar() {
     <>
       {/* <!-- Navbar Start --> */}
       <div className="flex gap-3 items-center">
-        <img width={100} src={Logo} />
+        <img width={100} src={Logo} alt="Tulis Logo" />
         {user ? (
-          <div className="flex gap-3 ml-auto">
+          <div className="flex gap-3 ml-auto items-center">
             <Link
               to="/"
-              className="text-sky-700 px-4 py-2 rounded-full font-semibold"
+              className="theme-accent px-4 py-2 rounded-full font-semibold hover:theme-accent-bg hover:text-white transition-all duration-300"
             >
               Home
             </Link>
             <Link
               to="/cart"
-              className="text-sky-700 px-4 py-2 rounded-full font-semibold"
+              className="theme-accent px-4 py-2 rounded-full font-semibold hover:theme-accent-bg hover:text-white transition-all duration-300"
             >
               Cart
             </Link>
 
             <button
               onClick={handleLogout}
-              className="text-sky-700 px-4 py-2 rounded-full font-semibold"
+              className="theme-accent px-4 py-2 rounded-full font-semibold hover:theme-accent-bg hover:text-white transition-all duration-300"
             >
               Logout
             </button>
             <button
-              className="text-sky-700 px-4 py-2 rounded-full font-semibold"
+              className="theme-accent px-3 py-3 rounded-full font-semibold hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300"
               onClick={toggleTheme}
+              aria-label="Toggle theme"
             >
-              {theme === "light" ? <Sun size={24} /> : <Moon size={24} />}
+              {theme === "light" ? <Sun size={20} /> : <Moon size={20} />}
             </button>
           </div>
         ) : (
-          <div className="flex gap-3 ml-auto">
+          <div className="flex gap-3 ml-auto items-center">
             <Link
               to="/"
-              className="text-sky-700 px-4 py-2 rounded-full font-semibold"
+              className="theme-accent px-4 py-2 rounded-full font-semibold hover:theme-accent-bg hover:text-white transition-all duration-300"
             >
               Home
             </Link>
             <Link
               to="/register"
-              className="text-sky-700 px-4 py-2 rounded-full font-semibold"
+              className="theme-accent px-4 py-2 rounded-full font-semibold hover:theme-accent-bg hover:text-white transition-all duration-300"
             >
               Register
             </Link>
             <Link
               to="/login"
-              className="text-sky-700 px-4 py-2 rounded-full font-semibold"
+              className="theme-accent px-4 py-2 rounded-full font-semibold hover:theme-accent-bg hover:text-white transition-all duration-300"
             >
               Login
             </Link>
+            <button
+              className="theme-accent px-3 py-3 rounded-full font-semibold hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300"
+              onClick={toggleTheme}
+              aria-label="Toggle theme"
+            >
+              {theme === "light" ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
           </div>
         )}
       </div>
-      <hr className="mt-5 border-gray-300" />
+      <hr className="mt-5 theme-border" />
       {/* <!-- Navbar End --> */}
     </>
   );

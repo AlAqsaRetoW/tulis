@@ -1,10 +1,10 @@
-import { Edit } from 'lucide-react';
-import { useEffect, useState } from 'react';
-import { successAlert, errorAlert } from '../utils/Swal';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchProduct, editProduct } from '../app/productActions';
-import UploadWidget from '../components/UploadWidget';
+import { Edit } from "lucide-react";
+import { useEffect, useState } from "react";
+import { successAlert, errorAlert } from "../utils/Swal";
+import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProduct, editProduct } from "../app/productActions";
+import UploadWidget from "../components/UploadWidget";
 
 function EditProductPage() {
   const navigate = useNavigate();
@@ -12,27 +12,32 @@ function EditProductPage() {
   const { product } = useSelector((state) => state.product);
   const { id } = useParams();
 
-  const [name, setName] = useState('');
-  const [images, setImages] = useState('');
-  const [category, setCategory] = useState('');
-  const [desc, setDesc] = useState('');
+  const [name, setName] = useState("");
+  const [images, setImages] = useState("");
+  const [category, setCategory] = useState("");
+  const [desc, setDesc] = useState("");
   const [price, setPrice] = useState(0);
   const [stock, setStock] = useState(0);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      dispatch(editProduct({ id, name, images, category, desc, price, stock }));
-      successAlert('Success Edit Product!', `Product has been updated`);
-      navigate('/admin');
+      await dispatch(
+        editProduct({ id, name, images, category, desc, price, stock })
+      );
+      successAlert("Success Edit Product!", `Product has been updated`);
+      navigate("/admin");
     } catch (err) {
-      errorAlert('Error Edit Product!', err.message);
+      errorAlert(
+        "Error Edit Product!",
+        err?.message || "Failed to edit product"
+      );
     }
   };
 
   useEffect(() => {
     dispatch(fetchProduct(id));
-  }, []);
+  }, [dispatch, id]);
 
   useEffect(() => {
     if (product) {
@@ -44,7 +49,6 @@ function EditProductPage() {
       setStock(product.stock);
       console.log(product.category);
     }
-
   }, [product]);
 
   return (
