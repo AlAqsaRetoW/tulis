@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { successAlert, errorAlert } from "../utils/Swal";
 import { AuthContext } from "../context/AuthContext";
 import loginUser from "../hooks/useLogin";
-import { useGoogleLogin as googleLogin } from "../hooks/useGooglelogin";
+import { useGoogleLogin as googleLogin } from "../hooks/useGoogleLogin";
 // import GoogleLogo from '../assets/google-logo.svg';
 
 function LoginPage() {
