@@ -26,7 +26,7 @@ function AdminNavbar() {
     <>
       {/* <!-- Navbar Start --> */}
       <div className="flex gap-3 items-center">
-        <img width={100} src={Logo} alt="Tulis Logo" />
+        <img width={100} src={Logo} alt="Tulis Logo" className="theme-logo" />
         <div className="flex gap-3 ml-auto items-center">
           <Link
             to="/admin"

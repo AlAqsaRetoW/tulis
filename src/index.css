@@ -1,5 +1,4 @@
 @import "tailwindcss";
-
 /* CSS Custom Properties for Theme Support */
 :root {
   /* Light theme colors */
@@ -93,13 +92,22 @@ body {
   background-color: var(--color-accent-hover);
 }
 
+/* Logo theming */
+.theme-logo {
+  filter: none;
+}
+
+.dark .theme-logo {
+  filter: invert(1);
+}
+
 /* Enhanced transitions for smooth theme switching */
 * {
-  transition-property: background-color, border-color, color, fill, stroke;
+  transition-property: background-color, border-color, color, fill, stroke,
+    filter;
   transition-duration: 0.3s;
   transition-timing-function: ease;
 }
-
 /* Custom scrollbar for dark theme */
 ::-webkit-scrollbar {
   width: 8px;

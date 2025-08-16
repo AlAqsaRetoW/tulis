@@ -1,12 +1,11 @@
-import Logo from './assets/tulis-logo.png';
+import Logo from "./assets/tulis-logo.png";
 
 function App() {
-
   return (
     <div className="container mx-auto mt-5">
       {/* <!-- Navbar Start --> */}
       <div className="flex gap-3 items-center">
-        <img width={100} src={Logo} />
+        <img width={100} src={Logo} alt="Tulis Logo" className="theme-logo" />
         <div className="flex gap-3 ml-auto">
           <a
             href="/"
@@ -51,9 +50,7 @@ function App() {
               className="w-full h-64 object-cover rounded-md"
             />
             <h2 className="mt-3 font-semibold">KUPU-KUPU</h2>
-            <p className="text-gray-600">
-              Colored Pencil
-            </p>
+            <p className="text-gray-600">Colored Pencil</p>
             <p className="font-bold mt-2">Rp 129.000 / 24pcs</p>
           </div>
 
@@ -129,9 +126,7 @@ function App() {
       {/* <!-- Login Page Start --> */}
       <div className="grid grid-cols-6 gap-5 max-w-screen-xl mx-auto">
         <div className="col-span-3 flex justify-center items-center">
-          <h1 className="text-5xl font-bold">
-            Login
-          </h1>
+          <h1 className="text-5xl font-bold">Login</h1>
         </div>
         <div className="col-span-3 px-20 min-h-[calc(100vh-200px)] flex flex-col justify-center">
           <form className="w-full">
@@ -151,15 +146,15 @@ function App() {
             </div>
             <button
               className=" bg-sky-700 rounded-lg py-3 px-2 w-full text-white font-bold mt-5"
-              type="submit">
+              type="submit"
+            >
               Login
             </button>
           </form>
 
           <div className="justify-center mt-3 text-center">
             Don't have an account?
-            <a href="/register"
-              className="underline hover:text-sky-700">
+            <a href="/register" className="underline hover:text-sky-700">
               Register here
             </a>
           </div>
@@ -206,12 +201,10 @@ function App() {
           </form>
           <div className="justify-center mt-3 text-center">
             Already have an account?
-            <a href="/login"
-              className="underline hover:text-sky-700">
+            <a href="/login" className="underline hover:text-sky-700">
               Login here
             </a>
           </div>
-
         </div>
       </div>
       {/* <!-- Register Page End --> */}

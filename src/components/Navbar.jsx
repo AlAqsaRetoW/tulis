@@ -15,7 +15,7 @@ function Navbar() {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      successAlert("Success!", "Logout success"); 
+      successAlert("Success!", "Logout success");
       navigate("/");
     } catch (err) {
       console.error(err);
@@ -26,7 +26,7 @@ function Navbar() {
     <>
       {/* <!-- Navbar Start --> */}
       <div className="flex gap-3 items-center">
-        <img width={100} src={Logo} alt="Tulis Logo" />
+        <img width={100} src={Logo} alt="Tulis Logo" className="theme-logo" />
         {user ? (
           <div className="flex gap-3 ml-auto items-center">
             <Link
