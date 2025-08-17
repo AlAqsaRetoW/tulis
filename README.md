@@ -2,8 +2,6 @@
 
 A modern, responsive e-commerce platform for stationery products built with React, Firebase, and Tailwind CSS. Features a comprehensive dark theme system, user authentication, and admin management capabilities.
 
-![Tulis Logo](src/assets/tulis-logo.png)
-
 ## ✨ Features
 
 ### 🛍️ **E-commerce Functionality**
