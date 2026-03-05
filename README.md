@@ -2,8 +2,6 @@
 
 A modern, responsive e-commerce platform for stationery products built with React, Firebase, and Tailwind CSS. Features a comprehensive dark theme system, user authentication, and admin management capabilities.
 
-![Tulis Logo](src/assets/tulis-logo.png)
-
 ## ✨ Features
 
 ### 🛍️ **E-commerce Functionality**
@@ -105,10 +103,6 @@ A modern, responsive e-commerce platform for stationery products built with Reac
    VITE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
    VITE_APP_ID=your_firebase_app_id
    VITE_MEASUREMENT_ID=your_firebase_measurement_id
-
-   # Optional: if you parameterize Cloudinary later
-   # VITE_CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
-   # VITE_CLOUDINARY_UPLOAD_PRESET=your_cloudinary_upload_preset
    ```
 
 4. **Firebase Configuration**
@@ -224,14 +218,6 @@ Ensure all environment variables are set in your hosting platform:
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- Firebase for backend services
-- Cloudinary for image hosting
-- Tailwind CSS for styling
-- React community for excellent documentation
-- Lucide for beautiful icons
 
 ---
 
