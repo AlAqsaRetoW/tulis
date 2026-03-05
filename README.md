@@ -47,7 +47,29 @@ A modern, responsive e-commerce platform for stationery products built with Reac
 - **Form Validation**: Client-side and server-side validation
 - **Error Boundaries**: Graceful error handling throughout the app
 
-## 🚀 Getting Started
+## � Tech Stack
+
+### Frontend
+
+- **Framework**: React 18
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS
+- **State Management**: Redux Toolkit
+- **Routing**: React Router v6
+
+### Backend & Services
+
+- **Authentication**: Firebase Authentication (Email/Password & Google OAuth)
+- **Database**: Firebase Firestore
+- **Image Hosting**: Cloudinary
+
+### Development Tools
+
+- **Linting**: ESLint
+- **Package Manager**: npm/yarn
+- **Deployment**: Firebase Hosting
+
+## �🚀 Getting Started
 
 ### Prerequisites
 
@@ -90,14 +112,12 @@ A modern, responsive e-commerce platform for stationery products built with Reac
    ```
 
 4. **Firebase Configuration**
-
    - Create a Firebase project
    - Enable Authentication (Email/Password and Google)
    - Create a Firestore database (native mode)
    - Add your Firebase config to `src/config/firebase.js` (already wired to use the `.env` variables above)
 
 5. **Cloudinary Setup**
-
    - Add the Cloudinary upload widget script (already included in `index.html`):
      ```html
      <script
